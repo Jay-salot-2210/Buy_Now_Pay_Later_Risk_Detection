@@ -6,7 +6,13 @@ import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# Ensure we are in the correct root directory regardless of how Streamlit runs this
+current_dir = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.abspath(os.path.join(current_dir, '..'))
+if not os.path.exists(os.path.join(BASE_DIR, 'src')):
+    # Fallback if running from root directly
+    BASE_DIR = os.path.abspath(os.path.join(current_dir, 'bnpl_risk_platform'))
+
 sys.path.append(BASE_DIR)
 
 from src.data_utils import load_data
