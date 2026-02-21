@@ -1,41 +1,41 @@
 <p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/Jay-salot-2210/Modeling-Systematic-Market-Risk-via-Principal-Component-Analysis-and-Macroeconomic-News/daily_pc1_prediction.yml?label=Daily%20Pipeline&logo=github" />
   <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" />
-  <img src="https://img.shields.io/badge/ML-Scikit--Learn-orange" />
-  <img src="https://img.shields.io/badge/Data-GDELT%20%7C%20Yahoo%20Finance-green" />
+  <img src="https://img.shields.io/badge/ML-LightGBM%20%7C%20XGBoost-orange" />
+  <img src="https://img.shields.io/badge/Data-LendingClub-green" />
   <img src="https://img.shields.io/badge/Dashboard-Streamlit-red?logo=streamlit" />
   <img src="https://img.shields.io/badge/Status-Production--Ready-success" />
 </p>
 
-# Modeling Systematic Market Risk via PCA and Macroeconomic News
+# BNPL Risk & Profit Optimization Platform
 
-A full-stack quantitative finance project that **detects, predicts, and visualizes systematic market risk** using **Principal Component Analysis (PCA)** and **global macroeconomic news**.
+A full-stack quantitative risk project that **detects default probabilities, assigns dynamic credit limits, and optimizes expected profit** for Buy Now, Pay Later (BNPL) portfolios.
 
 **Live Dashboard:**  
-https://pc1-market-risk-by-jay.streamlit.app/
+*(Add your deployed Streamlit link here after deployment!)*
 
 ---
 
 ## Project Overview
 
-When hundreds of stocks move together, it is rarely coincidence — it is **systematic risk**.
+Approving every customer leads to defaults; rejecting too many leaves profit on the table.
 
-This project:
-- Decomposes market returns into **orthogonal eigen-portfolios**
-- Identifies **PC1 as the market mode**
-- Predicts PC1 direction using **macroeconomic news**
-- Deploys a **fully automated daily pipeline**
-- Visualizes results via a **public Streamlit dashboard**
+This project implements an end-to-end Machine Learning decision engine that:
+- Assesses transaction risk using advanced ensemble models
+- Optimizes approval thresholds based on Expected Monetary Value (EMV)
+- Assigns dynamic credit limits based on real-time risk profiles
+- Deploys a **fully automated machine learning pipeline**
+- Visualizes results and portfolio health via a **public Streamlit dashboard**
 
 ---
 
 ## Key Concepts
 
-- Eigen-Portfolios
-- Market Mode (PC1)
-- News-Driven Market Prediction
-- Machine Learning + Finance
-- End-to-End Deployment
+- Default Probability Prediction
+- Expected Monetary Value (EMV) Optimization
+- Dynamic Credit Limit Assignment
+- Model Explainability (SHAP)
+- Machine Learning + Risk Management
+- Real-time API Scoring
 
 ---
 
@@ -43,11 +43,10 @@ This project:
 
 | Data | Source |
 |----|----|
-| Equity Prices | Yahoo Finance |
-| Macroeconomic News | GDELT Project |
-| Sentiment & Events | GDELT v2 |
+| Loan Data | LendingClub Real-World Data |
+| Features | Income, DTI, FICO Score, Loan Amount, Installment, etc. |
 
-GDELT monitors **global news in real time** across thousands of sources.
+The pipeline strictly processes real-world financial data to simulate realistic BNPL scenarios.
 
 ---
 
@@ -56,48 +55,33 @@ GDELT monitors **global news in real time** across thousands of sources.
 ### Languages
 - Python
 
-### Libraries
-- NumPy, Pandas
-- Scikit-Learn
-- Scrapy
-- yFinance
-- Streamlit
-- Matplotlib
+### Libraries & Frameworks
+- Pandas, NumPy
+- Scikit-Learn, LightGBM, XGBoost, CatBoost
+- SHAP (Explainability)
+- FastAPI, Uvicorn (Backend API)
+- Streamlit (Frontend Dashboard)
+- Matplotlib, Seaborn
 
 ### Infrastructure
-- GitHub Actions (Automation)
 - Streamlit Cloud (Deployment)
+- Git / GitHub (Version Control)
 
 ---
 
 ## System Architecture
-Market Prices ──► PCA ──► PC1 Labels
 
-Macroeconomic News ──► Feature Engineering
-
-▲
-ML Prediction (Daily)
+Raw User Data ──► Feature Engineering ──► Preprocessed Features
 
 ▲
-GitHub Actions Automation
+ML Risk Prediction (LightGBM/XGBoost)
 
 ▲
-Streamlit Dashboard
+Profit Optimization Engine (Threshold Tuning & Limits)
 
+▲
+Streamlit Dashboard (Portfolio Monitoring)
 
----
-
-## Automation 
-
-- Runs **automatically every weekday**
-- Scheduled using **GitHub Actions (IST aligned)**
-- Fetches live news
-- Generates features
-- Predicts PC1 direction
-- Updates dashboard data
-
-Fully cloud-based  
-No local server required
 
 ---
 
@@ -105,56 +89,31 @@ No local server required
 
 The Streamlit dashboard displays:
 
-- Daily PC1 prediction
-- Prediction confidence
-- Historical PC1 direction
-- Feature impact explanation
-- Trend visualization
-
-**Dashboard:**  
-https://pc1-market-risk-by-jay.streamlit.app/
-
----
-
-## Technologies Used
-
-### Programming Language
-- Python
-
-### Libraries & Tools
-- NumPy
-- Pandas
-- Scikit-learn
-- Scrapy
-- yFinance
-- Matplotlib
-- Streamlit
-- Joblib
-
-### Infrastructure
-- GitHub Actions (CI/CD)
-- Streamlit Cloud (Hosting)
+- **Portfolio Health Summary**: Total transactions, approval rates, expected profit, and projected losses.
+- **Interactive Risk Gauge**: Visualizes individual application risk levels.
+- **Model Explainability**: SHAP force plots explaining *why* a decision was made.
+- **Transaction Simulation**: Live form to test new applicant data.
+- **Data Visualizations**: Distribution of FICO scores, Loan Amounts, and Default Rates.
 
 ---
 
 ## Key Results
 
-- PC1 explains **~37%** of total market variance
-- Macroeconomic news shows **predictive power**
-- Strategy demonstrates controlled market correlation
-- Fully interpretable and reproducible pipeline
+- Effectively balanced approval rates against default risk.
+- Implemented threshold optimization directly tied to business profitability.
+- Advanced ensemble models provided superior discriminatory power (AUC/ROC) over traditional logistic regression.
+- Fully interpretable recommendations accessible to non-technical stakeholders via SHAP.
 
 ---
 
 ## Future Scope (Recruiter-Focused)
 
 High-impact extensions:
-- LLM-based news embeddings (FinBERT / GPT)
-- Multi-factor prediction (PC2, PC3)
-- Intraday market risk forecasting
-- Reinforcement learning portfolio allocation
-- Cross-market deployment (NIFTY, STOXX, Nikkei)
-- Real-time alerts (Telegram / Email)
+- Graph Neural Networks (GNNs) for detecting synthetic identity fraud.
+- Reinforcement Learning for dynamic pricing and interest rate assignment.
+- Alternative Data integration (e.g., Telecom billing, Utility payments).
+- Automated CI/CD retraining pipelines for model drift adaptation.
+- Real-time streaming features using Kafka/Flink.
 
 ---
 
@@ -162,7 +121,7 @@ High-impact extensions:
 
 **Jay Salot**  
 Quantitative Finance & Machine Learning  
-DAU, Gandhinagar(formerly known as DA-IICT)
+DAU, Gandhinagar (formerly known as DA-IICT)
 
 ---
 
