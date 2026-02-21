@@ -31,14 +31,22 @@ if mode == "Admin Dashboard":
         data_path = os.path.join(BASE_DIR, 'data/raw/LendingClub_data.csv')
         df = load_data(data_path)
         
+        # Calculate default rate
+        bad_indicators = ['Charged Off', 'Default', 'Does not meet the credit policy. Status:Charged Off']
+        if 'loan_status' in df.columns:
+            is_default = df['loan_status'].apply(lambda x: 1 if x in bad_indicators else 0)
+        else:
+            is_default = pd.Series([0]) # Fallback
+
         col1, col2, col3 = st.columns(3)
         col1.metric("Total Transactions", len(df))
-        col2.metric("Default Rate", f"{df['is_default'].mean():.2%}")
-        col3.metric("Total Volume", f"${df['amount'].sum():,.0f}")
+        col2.metric("Default Rate", f"{is_default.mean():.2%}")
+        col3.metric("Total Volume", f"${df['loan_amnt'].sum():,.0f}")
         
-        st.subheader("Risk Distribution")
+        st.subheader("Risk Distribution (FICO Score)")
         fig, ax = plt.subplots(figsize=(10, 4))
-        sns.histplot(df['credit_score_external'], bins=30, ax=ax, kde=True)
+        if 'fico_range_low' in df.columns:
+            sns.histplot(df['fico_range_low'].dropna(), bins=30, ax=ax, kde=True)
         st.pyplot(fig)
         
     except Exception as e:
