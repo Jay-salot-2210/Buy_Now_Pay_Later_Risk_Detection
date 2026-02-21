@@ -1,12 +1,14 @@
 import streamlit as st
 import pandas as pd
 import requests
-import sys
 import os
+import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(BASE_DIR)
+
 from src.data_utils import load_data
 
 st.set_page_config(page_title="BNPL Risk Dashboard", layout="wide")
@@ -20,7 +22,8 @@ if mode == "Admin Dashboard":
     
     # Load sample data efficiently
     try:
-        df = load_data('data/raw/synthetic_bnpl_data.csv')
+        data_path = os.path.join(BASE_DIR, 'data/raw/LendingClub_data.csv')
+        df = load_data(data_path)
         
         col1, col2, col3 = st.columns(3)
         col1.metric("Total Transactions", len(df))
@@ -68,7 +71,8 @@ elif mode == "Transaction Simulator":
                 from src.model import RiskModel # Lazy load
                 from src.inference import make_decision, get_recommended_limit, calculate_expected_profit
                 
-                model = RiskModel('models/lightgbm_model.pkl')
+                model_path = os.path.join(BASE_DIR, 'models/lightgbm_model.pkl')
+                model = RiskModel(model_path)
                 
                 # Mock request object logic from API
                 features = {
