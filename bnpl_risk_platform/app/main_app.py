@@ -43,10 +43,10 @@ if mode == "Admin Dashboard":
         col2.metric("Default Rate", f"{is_default.mean():.2%}")
         col3.metric("Total Volume", f"${df['loan_amnt'].sum():,.0f}")
         
-        st.subheader("Risk Distribution (FICO Score)")
+        st.subheader("Risk Distribution (Debt-to-Income)")
         fig, ax = plt.subplots(figsize=(10, 4))
-        if 'fico_range_low' in df.columns:
-            sns.histplot(df['fico_range_low'].dropna(), bins=30, ax=ax, kde=True)
+        if 'dti' in df.columns:
+            sns.histplot(df['dti'].dropna(), bins=30, ax=ax, kde=True)
         st.pyplot(fig)
         
     except Exception as e:
@@ -59,7 +59,7 @@ elif mode == "Transaction Simulator":
         col1, col2 = st.columns(2)
         with col1:
             annual_inc = st.number_input("Annual Income ($)", 0, 1000000, 60000)
-            loan_amnt = st.number_input("Loan Amount ($)", 500, 40000, 10000)
+            loan_amnt = st.number_input("Loan Amount ($)", 500, 500000, 10000)
             fico = st.number_input("FICO Score", 300, 850, 700)
             dti = st.number_input("Debt-to-Income (DTI)", 0.0, 100.0, 15.0)
             int_rate = st.number_input("Interest Rate (%)", 5.0, 30.0, 12.0)
