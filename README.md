@@ -11,7 +11,7 @@
 A full-stack quantitative risk project that **detects default probabilities, assigns dynamic credit limits, and optimizes expected profit** for Buy Now, Pay Later (BNPL) portfolios.
 
 **Live Dashboard:**  
-*(Add your deployed Streamlit link here after deployment!)*
+*https://buynowpaylaterriskdetection-by-jay.streamlit.app/*
 
 ---
 
