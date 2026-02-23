@@ -47,6 +47,7 @@ if mode == "Admin Dashboard":
         fig, ax = plt.subplots(figsize=(10, 4))
         if 'dti' in df.columns:
             sns.histplot(df['dti'].dropna(), bins=30, ax=ax, kde=True)
+            ax.set_xlim(left=0)
         st.pyplot(fig)
         
     except Exception as e:
